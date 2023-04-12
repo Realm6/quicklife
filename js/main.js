@@ -1,6 +1,10 @@
 "use strict";
 
 let characters = [];
+if ("serviceWorker" in navigator) {
+  // register service worker
+  navigator.serviceWorker.register("service-worker.js");
+}
 
 class Person {
     constructor(name, surname, age, gender, nationality, money, location) {
