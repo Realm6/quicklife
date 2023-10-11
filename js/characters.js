@@ -16,7 +16,7 @@ const studyingProcess = (textbox) => {
     } else if(currentCareer && currentEducation === 'university' && yearsStudied === duration){
         player.career[player.currentCareer.label] = player.currentCareer;
         if(player.currentCareer.paidBy === 'myself') player.money.expenses -= 6000
-        player.currentCareer = {};
+        player.currentCareer = {studying: false};
         player.currentEducation = 'none';
         textbox.innerHTML += `<p>I finished my career</p>`
     }
@@ -271,4 +271,16 @@ const pregnancyHandler = (person) => {
     }
 
     characters.push(offspring)
+}
+
+const statsChanges = () => {
+    const stats = Object.entries(player.stats)
+    for(let stat of stats) {
+        // if its true buffes the stat
+        if(Math.floor(Math.random() * 2) === 1){
+            player.stats[stat[0]] += Math.floor(Math.random() * 5)
+        } else {
+            player.stats[stat[0]] -= Math.floor(Math.random() * 5)
+        }
+    }
 }

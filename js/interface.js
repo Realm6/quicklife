@@ -144,18 +144,9 @@ const annualChanges = () => {
 
     // for university
     studyingProcess(textContainer)
-
-    //stat changes
-    if (Math.floor(Math.random() * 2) === 1) {
-        player.stats.happiness += Math.floor(Math.random() * 10);
-        player.stats.appearance += Math.floor(Math.random() * 2);
-        player.stats.smartness += Math.floor(Math.random() * 10)
-    } else {
-        player.stats.happiness -= Math.floor(Math.random() * 10);
-        player.stats.appearance -= Math.floor(Math.random() * 2);
-        player.stats.smartness -= Math.floor(Math.random() * 10)
-    }
-
+    if(player.job != 'none') player.job.buff(player)
+    if(player.currentCareer.studying) player.currentCareer.buff(player);
+    statsChanges()
     statsBuffer()
     statsLimit(player)
     handleStatBars(player, true);
